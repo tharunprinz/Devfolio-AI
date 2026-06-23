@@ -32,6 +32,21 @@ public class AIService {
     }
 
     /**
+     * Strips markdown code fences (```json ... ```) that Gemini sometimes wraps around JSON.
+     */
+    private String cleanJson(String raw) {
+        if (raw == null) return null;
+        String cleaned = raw.trim();
+        if (cleaned.startsWith("```")) {
+            cleaned = cleaned.replaceFirst("^```[a-zA-Z]*\\n?", "");
+            if (cleaned.endsWith("```")) {
+                cleaned = cleaned.substring(0, cleaned.lastIndexOf("```")).trim();
+            }
+        }
+        return cleaned;
+    }
+
+    /**
      * Helper to invoke Gemini API with a text prompt expecting a JSON response
      */
     private String callGemini(String prompt) {
@@ -73,7 +88,7 @@ public class AIService {
                     List parts = (List) content.get("parts");
                     if (!parts.isEmpty()) {
                         Map part = (Map) parts.get(0);
-                        return (String) part.get("text");
+                        return cleanJson((String) part.get("text"));
                     }
                 }
             }
@@ -82,6 +97,13 @@ public class AIService {
         }
 
         return null;
+    }
+
+    /**
+     * Public direct Gemini call — used by controllers that build their own prompt.
+     */
+    public String askGemini(String prompt) {
+        return callGemini(prompt);
     }
 
     public String analyzeProject(String repoName, String originalDesc, String language, String readmeContent) {

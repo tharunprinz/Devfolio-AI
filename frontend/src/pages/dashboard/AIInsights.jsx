@@ -96,12 +96,12 @@ export default function AIInsights() {
     setRoastModal(true);
     try {
       const res = await aiApi.getRoast();
-      // Extract the roast field from the returned JSON string
-      const parsed = JSON.parse(res.data);
+      // Axios may already parse JSON — handle both string and object
+      const parsed = typeof res.data === 'string' ? JSON.parse(res.data) : res.data;
       setRoast(parsed.roast || "Your code is so clean, I couldn't find anything to roast. Boring!");
     } catch (e) {
-      console.error(e);
-      setRoast("You code is so average, it doesn't even compile in my sarcasm parser. Sync some more repos and try again.");
+      console.error('Roast error:', e);
+      setRoast("Your repos are so mysterious, my sarcasm parser timed out. Sync more repos and try again!");
     } finally {
       setRoasting(false);
     }
@@ -161,7 +161,7 @@ export default function AIInsights() {
 
           <button
             onClick={handleRegenerate}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 text-white font-semibold text-xs hover:bg-purple-500 transition-colors shadow-lg shadow-purple-600/10 cursor-pointer border border-purple-500/20"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold text-xs hover:from-orange-400 hover:to-amber-400 transition-all shadow-lg shadow-orange-500/15 cursor-pointer border border-orange-500/20"
           >
             <Wand2 className="w-3.5 h-3.5" />
             <span>Regenerate Insights</span>
@@ -173,7 +173,7 @@ export default function AIInsights() {
       <div className="grid md:grid-cols-2 gap-8 select-none">
         <div className="glass-panel p-6 bg-white/5 border border-white/10 space-y-4">
           <h2 className="font-bold text-sm text-white flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-purple-400" />
+            <TrendingUp className="w-4 h-4 text-teal-400" />
             <span>Developer Strengths</span>
           </h2>
           <ul className="space-y-3">
@@ -216,7 +216,7 @@ export default function AIInsights() {
                 
                 {/* Progress bar */}
                 <div className="w-full h-1.5 rounded-full bg-white/5 overflow-hidden mb-4">
-                  <div className="h-full bg-purple-500 rounded-full" style={{ width: `${data.matchPercentage}%` }} />
+                  <div className="h-full rounded-full bg-gradient-to-r from-orange-500 to-teal-500" style={{ width: `${data.matchPercentage}%` }} />
                 </div>
               </div>
 
@@ -240,7 +240,7 @@ export default function AIInsights() {
         <div className="glass-panel p-6 bg-white/5 border border-white/10 space-y-4 flex flex-col justify-between">
           <div className="space-y-4">
             <h2 className="font-bold text-sm text-white flex items-center gap-2 select-none">
-              <BookOpen className="w-4 h-4 text-purple-400" />
+              <BookOpen className="w-4 h-4 text-orange-400" />
               <span>Cover Letter Generator</span>
             </h2>
 
@@ -250,14 +250,14 @@ export default function AIInsights() {
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
                 placeholder="Company Name"
-                className="p-2.5 rounded-xl bg-black/40 border border-white/5 text-white text-xs outline-none focus:border-purple-500/50"
+                className="p-2.5 rounded-xl bg-black/40 border border-white/5 text-white text-xs outline-none"
               />
               <input 
                 type="text" 
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 placeholder="Role Title"
-                className="p-2.5 rounded-xl bg-black/40 border border-white/5 text-white text-xs outline-none focus:border-purple-500/50"
+                className="p-2.5 rounded-xl bg-black/40 border border-white/5 text-white text-xs outline-none"
               />
             </div>
             
@@ -274,7 +274,7 @@ export default function AIInsights() {
             <button
               onClick={handleGenerateCoverLetter}
               disabled={generatingLetter || !jobDesc}
-              className="w-full py-3 rounded-xl bg-purple-600 text-white text-xs font-semibold hover:bg-purple-500 disabled:opacity-50 transition-colors cursor-pointer select-none"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold hover:from-orange-400 hover:to-amber-400 disabled:opacity-50 transition-all cursor-pointer select-none"
             >
               {generatingLetter ? 'Analyzing requirements...' : 'Generate Target Cover Letter'}
             </button>
@@ -299,7 +299,7 @@ export default function AIInsights() {
         <div className="glass-panel p-6 bg-white/5 border border-white/10 space-y-4 flex flex-col justify-between">
           <div className="space-y-4">
             <h2 className="font-bold text-sm text-white flex items-center gap-2 select-none">
-              <Award className="w-4 h-4 text-cyan-400" />
+              <Award className="w-4 h-4 text-teal-400" />
               <span>LinkedIn Bio Generator</span>
             </h2>
 
@@ -308,7 +308,7 @@ export default function AIInsights() {
               <select
                 value={tone}
                 onChange={(e) => setTone(e.target.value)}
-                className="w-full p-2.5 rounded-xl bg-black/40 border border-white/5 text-white text-xs outline-none focus:border-purple-500/50"
+                className="w-full p-2.5 rounded-xl bg-black/40 border border-white/5 text-white text-xs outline-none"
               >
                 <option value="professional">Professional & Technical</option>
                 <option value="bold">Bold & Innovation-driven</option>
@@ -322,7 +322,7 @@ export default function AIInsights() {
             <button
               onClick={handleGenerateLinkedIn}
               disabled={generatingLinkedin}
-              className="w-full py-3 rounded-xl bg-purple-600 text-white text-xs font-semibold hover:bg-purple-500 disabled:opacity-50 transition-colors cursor-pointer select-none"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-600 to-teal-500 text-white text-xs font-semibold hover:from-teal-500 hover:to-teal-400 disabled:opacity-50 transition-all cursor-pointer select-none"
             >
               {generatingLinkedin ? 'Writing summary...' : 'Generate LinkedIn Summary'}
             </button>

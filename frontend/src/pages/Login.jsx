@@ -70,7 +70,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] bg-grid-pattern flex items-center justify-center p-6 relative">
-      <div className="glow-orb w-[400px] h-[400px] bg-purple-500/10 -top-20" />
+      <div className="glow-orb w-[400px] h-[400px] bg-orange-500/10 -top-20" />
       
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
@@ -79,9 +79,9 @@ export default function Login() {
         className="w-full max-w-md glass-panel p-8 text-center bg-black/40 relative overflow-hidden"
       >
         {/* Glow accent */}
-        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-20 bg-purple-500/20 blur-2xl" />
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-20 bg-orange-500/20 blur-2xl" />
 
-        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-cyan-500 flex items-center justify-center mx-auto mb-6">
+        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-orange-500 to-teal-400 flex items-center justify-center mx-auto mb-6">
           <Sparkles className="w-6 h-6 text-white" />
         </div>
 
@@ -98,7 +98,7 @@ export default function Login() {
           <button
             onClick={triggerGitHubLogin}
             disabled={loading}
-            className="w-full py-4 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-purple-600/10 cursor-pointer border border-purple-500/30"
+            className="w-full py-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 disabled:opacity-50 text-white font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-orange-500/20 cursor-pointer border border-orange-500/20"
           >
             {loading ? (
               <Loader2 className="w-4 h-4 animate-spin" />

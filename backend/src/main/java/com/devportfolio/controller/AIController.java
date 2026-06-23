@@ -170,32 +170,53 @@ public class AIController {
                 }
             }
 
-            // Call mock/real AI API for cover letter text
             String prompt = String.format(
-                    "Write a professional cover letter for developer %s applying for %s role at %s.\n" +
+                    "Write a professional, personalized cover letter for developer '%s' applying for the role of '%s' at '%s'.\n" +
                     "Job Description: %s\n" +
                     "Developer Skills: %s\n" +
-                    "Focus on how developer's GitHub projects solve key tasks in the job description.\n" +
-                    "Return a JSON object with: { \"coverLetter\": \"Your cover letter text\" }",
-                    user.getName(), role, company, jobDesc, skillsBuilder.toString()
+                    "Focus on how the developer's GitHub projects match the requirements in the job description.\n" +
+                    "Return ONLY a JSON object: { \"coverLetter\": \"<full letter text here>\" }",
+                    user.getName() != null ? user.getName() : user.getGithubUsername(),
+                    role, company, jobDesc, skillsBuilder.toString()
             );
 
-            // Call generic Gemini REST prompt logic
-            String rawJson = aiService.askChatbot("Cover Letter Writer Engine", "Cover Letter Writer instructions", prompt, List.of());
-            
-            // Clean/Transform chatbot output if it's formatted as standard chat reply
-            Map parsed = objectMapper.readValue(rawJson, Map.class);
-            String rawReply = (String) parsed.getOrDefault("reply", "");
-            
+            String rawJson = aiService.askGemini(prompt);
+
             Map<String, String> result = new HashMap<>();
-            result.put("coverLetter", rawReply.isEmpty() ? "Dear Hiring Manager,\n\nI am thrilled to apply for the " + role + " role at " + company + "..." : rawReply);
-            
+            if (rawJson != null && !rawJson.isBlank()) {
+                try {
+                    Map parsed = objectMapper.readValue(rawJson, Map.class);
+                    String letter = (String) parsed.getOrDefault("coverLetter", "");
+                    result.put("coverLetter", letter.isBlank() ?
+                        generateFallbackCoverLetter(user.getName(), role, company) : letter);
+                } catch (Exception parseEx) {
+                    log.warn("Could not parse cover letter JSON, using raw text: {}", parseEx.getMessage());
+                    result.put("coverLetter", rawJson);
+                }
+            } else {
+                result.put("coverLetter", generateFallbackCoverLetter(user.getName(), role, company));
+            }
+
             return ResponseEntity.ok(result);
 
         } catch (Exception e) {
             log.error("Failed to generate cover letter: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+    private String generateFallbackCoverLetter(String name, String role, String company) {
+        return String.format(
+            "Dear Hiring Manager,\n\n" +
+            "I am thrilled to apply for the %s role at %s. My name is %s and I have hands-on experience " +
+            "building full-stack applications using modern technologies.\n\n" +
+            "Throughout my GitHub projects, I have demonstrated a strong ability to architect scalable systems, " +
+            "write clean and maintainable code, and collaborate effectively in agile environments.\n\n" +
+            "I am confident that my technical background and passion for building impactful software make me " +
+            "an excellent fit for your team. I would love to discuss how I can contribute to %s's mission.\n\n" +
+            "Thank you for your time and consideration.\n\nBest regards,\n%s",
+            role, company, name != null ? name : "the developer", company, name != null ? name : "the developer"
+        );
     }
 
     @PostMapping("/linkedin-about")
@@ -213,18 +234,30 @@ public class AIController {
             }
 
             String prompt = String.format(
-                    "Generate a creative and modern LinkedIn About summary for developer %s in a '%s' tone.\n" +
-                    "Developer Skills: %s\n" +
-                    "Return a JSON object with: { \"linkedinAbout\": \"Your LinkedIn About section text\" }",
-                    user.getName(), tone, skillsBuilder.toString()
+                    "Generate a creative and compelling LinkedIn About section for developer '%s' in a '%s' tone.\n" +
+                    "Developer's GitHub Skills: %s\n" +
+                    "Make it personal, vivid, and reflective of the developer's actual technical stack.\n" +
+                    "Return ONLY a JSON object: { \"linkedinAbout\": \"<about section text here>\" }",
+                    user.getName() != null ? user.getName() : user.getGithubUsername(),
+                    tone, skillsBuilder.toString()
             );
 
-            String rawJson = aiService.askChatbot("LinkedIn About Writer Engine", "LinkedIn About instructions", prompt, List.of());
-            Map parsed = objectMapper.readValue(rawJson, Map.class);
-            String rawReply = (String) parsed.getOrDefault("reply", "");
+            String rawJson = aiService.askGemini(prompt);
 
             Map<String, String> result = new HashMap<>();
-            result.put("linkedinAbout", rawReply.isEmpty() ? "Passionate engineer specialized in " + skillsBuilder.toString() + " building modern fullstack apps." : rawReply);
+            if (rawJson != null && !rawJson.isBlank()) {
+                try {
+                    Map parsed = objectMapper.readValue(rawJson, Map.class);
+                    String about = (String) parsed.getOrDefault("linkedinAbout", "");
+                    result.put("linkedinAbout", about.isBlank() ?
+                        "Passionate engineer specializing in " + skillsBuilder + " — building modern, impactful applications." : about);
+                } catch (Exception parseEx) {
+                    log.warn("Could not parse linkedinAbout JSON, using raw text: {}", parseEx.getMessage());
+                    result.put("linkedinAbout", rawJson);
+                }
+            } else {
+                result.put("linkedinAbout", "Passionate engineer specializing in " + skillsBuilder + " — building modern, impactful applications.");
+            }
 
             return ResponseEntity.ok(result);
 

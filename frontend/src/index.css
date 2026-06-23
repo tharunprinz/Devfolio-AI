@@ -1,11 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+
 @theme {
+  /* ── Core brand colours ── */
   --color-bg-dark: #0A0A0A;
-  --color-primary-purple: #7C3AED;
-  --color-secondary-blue: #3B82F6;
-  --color-accent-cyan: #06B6D4;
-  --color-card-bg: rgba(255, 255, 255, 0.05);
+
+  /* Sunset Orange — replaces purple */
+  --color-orange-50:  #fff7ed;
+  --color-orange-100: #ffedd5;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea6c0a;
+  --color-orange-700: #c2550a;
+  --color-orange-800: #9a3c0b;
+  --color-orange-900: #7c310c;
+  --color-orange-950: #431707;
+
+  /* Amber accent — warm mid-tone for CTAs */
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+
+  /* Neon Teal — replaces blue */
+  --color-teal-50:  #f0fdfa;
+  --color-teal-100: #ccfbf1;
+  --color-teal-200: #99f6e4;
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e;
+  --color-teal-800: #115e59;
+  --color-teal-900: #134e4a;
+  --color-teal-950: #042f2e;
+
+  /* Card system */
+  --color-card-bg:     rgba(255, 255, 255, 0.04);
   --color-card-border: rgba(255, 255, 255, 0.08);
   --radius-xl-custom: 24px;
 }
@@ -21,23 +53,16 @@
   }
 
   /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
-  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(249, 115, 22, 0.25);
     border-radius: 9999px;
   }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.25);
-  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(249, 115, 22, 0.45); }
 }
 
-/* Custom premium classes */
+/* ── Glass panels ── */
 .glass-panel {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(20px);
@@ -50,38 +75,48 @@
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-panel-hover:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(124, 58, 237, 0.4);
-  box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(249, 115, 22, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(249, 115, 22, 0.18);
   transform: translateY(-2px);
 }
 
+/* ── Text gradients ── */
 .text-gradient {
-  background: linear-gradient(135deg, #FFF 30%, #a78bfa 100%);
+  background: linear-gradient(135deg, #FFF 30%, #fdba74 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+/* Orange → Teal — the primary brand gradient */
+.text-gradient-orange-teal {
+  background: linear-gradient(135deg, #f97316 0%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Keep legacy class name so existing JSX doesn't break */
 .text-gradient-purple-blue {
-  background: linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%);
+  background: linear-gradient(135deg, #f97316 0%, #14b8a6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-cyan-blue {
-  background: linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%);
+  background: linear-gradient(135deg, #14b8a6 0%, #f97316 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Mesh Background Animations */
+/* ── Background ── */
 .bg-grid-pattern {
   background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
 }
 
+/* ── Animated glow orbs ── */
 .glow-orb {
   position: absolute;
   border-radius: 9999px;
@@ -93,13 +128,16 @@
 }
 
 @keyframes float-slow {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  50% {
-    transform: translate(40px, -60px) scale(1.2);
-  }
-  100% {
-    transform: translate(-30px, 30px) scale(0.9);
-  }
+  0%   { transform: translate(0px,  0px)   scale(1);   }
+  50%  { transform: translate(40px, -60px) scale(1.2); }
+  100% { transform: translate(-30px, 30px) scale(0.9); }
+}
+
+/* ── Focus ring override ── */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: rgba(249, 115, 22, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
 }
