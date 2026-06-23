@@ -6,6 +6,7 @@ services:
     region: oregon
     rootDir: backend
     dockerfilePath: Dockerfile
+    autoDeploy: true
     healthCheckPath: /api/auth/health
     envVars:
       - key: MONGODB_URI
