@@ -40,7 +40,7 @@ export default function Sidebar() {
           <Sparkle className="w-5 h-5 text-white" />
         </div>
         <div>
-          <span className="font-bold text-lg text-white leading-tight block">DevPortfolio</span>
+          <span className="font-bold text-lg text-white leading-tight block">Devfolio</span>
           <span className="text-[10px] text-amber-400 font-semibold tracking-wider uppercase">AI Platform</span>
         </div>
       </div>

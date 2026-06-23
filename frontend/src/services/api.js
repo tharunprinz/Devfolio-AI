@@ -21,7 +21,7 @@ const apiClient = axios.create({
 // Interceptor to append the JWT token automatically
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('devportfolio_token');
+    const token = localStorage.getItem('devfolio_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -37,7 +37,7 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      localStorage.removeItem('devportfolio_token');
+      localStorage.removeItem('devfolio_token');
       localStorage.removeItem('devportfolio_user');
       if (window.location.pathname !== '/' && window.location.pathname !== '/login') {
         window.location.href = '/login';
@@ -50,7 +50,7 @@ apiClient.interceptors.response.use(
 export const authApi = {
   loginWithGitHub: (code, redirectUri) => apiClient.post('/auth/github', { code, redirectUri }),
   logout: () => {
-    localStorage.removeItem('devportfolio_token');
+    localStorage.removeItem('devfolio_token');
     localStorage.removeItem('devportfolio_user');
   },
   getCurrentUser: () => {

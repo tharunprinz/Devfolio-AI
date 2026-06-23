@@ -1,8 +1,8 @@
-# DevPortfolio AI
+# Devfolio AI
 
 <div align="center">
 
-![DevPortfolio AI Banner](https://img.shields.io/badge/DevPortfolio-AI-8b5cf6?style=for-the-badge&logo=github&logoColor=white)
+![Devfolio AI Banner](https://img.shields.io/badge/Devfolio-AI-8b5cf6?style=for-the-badge&logo=github&logoColor=white)
 
 **An AI-powered developer portfolio and resume generator, driven by your GitHub profile.**
 
@@ -19,7 +19,7 @@
 
 ## Overview
 
-**DevPortfolio AI** is a full-stack application that connects to your GitHub account and uses **Google Gemini** to automatically generate stunning developer portfolios and tailored resumes. It syncs your repositories, analyzes your code, and produces AI-powered insights — so you can focus on building, not writing about what you build.
+**Devfolio AI** is a full-stack application that connects to your GitHub account and uses **Google Gemini** to automatically generate stunning developer portfolios and tailored resumes. It syncs your repositories, analyzes your code, and produces AI-powered insights — so you can focus on building, not writing about what you build.
 
 Users authenticate via **GitHub OAuth**, grant the app read access to their repositories, and within minutes have a professionally generated portfolio site and a polished resume ready to share or export.
 
@@ -62,8 +62,8 @@ Before you begin, ensure you have:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/tharunprinz/DevPortfolio-AI.git
-cd DevPortfolio-AI
+git clone https://github.com/tharunprinz/Devfolio-AI.git
+cd Devfolio-AI
 ```
 
 ### 2. Install frontend dependencies
@@ -154,7 +154,7 @@ The frontend will run on **http://localhost:5173**
 ## Project Structure
 
 ```
-DevPortfolio-AI/
+Devfolio-AI/
 │
 ├── backend/
 │   ├── src/main/java/com/devportfolio/
@@ -193,7 +193,7 @@ DevPortfolio-AI/
 │   │   │   ├── UserService.java           # User logic
 │   │   │   ├── GitHubService.java         # GitHub API client
 │   │   │   └── AIService.java             # Gemini AI integration
-│   │   └── DevPortfolioApplication.java   # Spring Boot entry point
+│   │   └── DevfolioApplication.java   # Spring Boot entry point
 │   ├── src/main/resources/
 │   │   └── application.properties         # App configuration
 │   ├── Procfile                            # Render start command
@@ -296,7 +296,7 @@ POST   /api/ai/linkedin-about           # Generate LinkedIn About section
 ### Backend → Render
 
 1. Go to [render.com](https://render.com) → **New → Web Service**
-2. Connect repo `tharunprinz/DevPortfolio-AI`, set **Root Directory** to `backend`
+2. Connect repo `tharunprinz/Devfolio-AI`, set **Root Directory** to `backend`
 3. Set **Build Command**: `mvn clean package -DskipTests`
 4. Set **Start Command**: `java -jar target/backend-0.0.1-SNAPSHOT.jar`
 5. Add environment variables in the Render dashboard:
@@ -305,7 +305,7 @@ POST   /api/ai/linkedin-about           # Generate LinkedIn About section
 ### Frontend → Vercel
 
 1. Go to [vercel.com](https://vercel.com) → **New Project**
-2. Import repo `tharunprinz/DevPortfolio-AI`, set **Root Directory** to `frontend`
+2. Import repo `tharunprinz/Devfolio-AI`, set **Root Directory** to `frontend`
 3. Add environment variables: `VITE_GITHUB_CLIENT_ID`, `VITE_API_BASE_URL` (your Render URL)
 4. Deploy — Vercel auto-detects Vite
 

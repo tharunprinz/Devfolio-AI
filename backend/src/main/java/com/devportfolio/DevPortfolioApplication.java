@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DevPortfolioApplication {
+public class DevfolioApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DevPortfolioApplication.class, args);
+        SpringApplication.run(DevfolioApplication.class, args);
     }
 }

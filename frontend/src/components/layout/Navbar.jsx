@@ -15,7 +15,7 @@ export default function Navbar() {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-orange-500 to-amber-400 flex items-center justify-center shadow-md shadow-orange-500/20">
             <Sparkle className="w-4 h-4 text-white" />
           </div>
-          <span className="font-bold text-white tracking-tight">DevPortfolio <span className="text-amber-400 text-xs">AI</span></span>
+          <span className="font-bold text-white tracking-tight">Devfolio <span className="text-amber-400 text-xs">AI</span></span>
         </Link>
 
         {/* Nav — Features only */}

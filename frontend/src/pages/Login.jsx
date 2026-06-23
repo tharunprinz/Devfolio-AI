@@ -29,13 +29,13 @@ export default function Login() {
     setLoading(true);
     setError(null);
     // Clear any stale tokens before the fresh OAuth exchange
-    localStorage.removeItem('devportfolio_token');
+    localStorage.removeItem('devfolio_token');
     localStorage.removeItem('devportfolio_user');
     try {
       const response = await authApi.loginWithGitHub(code, REDIRECT_URI);
       const { token, username, name, avatarUrl } = response.data;
 
-      localStorage.setItem('devportfolio_token', token);
+      localStorage.setItem('devfolio_token', token);
       localStorage.setItem('devportfolio_user', JSON.stringify({ username, name, avatarUrl }));
 
       navigate('/dashboard');
@@ -59,7 +59,7 @@ export default function Login() {
 
   const handleMockLogin = () => {
     // Generate static mock session details for instant local preview
-    localStorage.setItem('devportfolio_token', 'mock-jwt-token-value-here');
+    localStorage.setItem('devfolio_token', 'mock-jwt-token-value-here');
     localStorage.setItem('devportfolio_user', JSON.stringify({
       username: 'octocat',
       name: 'The Octocat',
@@ -85,7 +85,7 @@ export default function Login() {
           <Sparkles className="w-6 h-6 text-white" />
         </div>
 
-        <h1 className="text-2xl font-bold text-white mb-2">Welcome to DevPortfolio</h1>
+        <h1 className="text-2xl font-bold text-white mb-2">Welcome to Devfolio</h1>
         <p className="text-gray-400 text-sm mb-8">Sign in with your GitHub account to sync repositories and start generating your AI portfolio.</p>
 
         {error && (

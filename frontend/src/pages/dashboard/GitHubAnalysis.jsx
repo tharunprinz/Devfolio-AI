@@ -265,7 +265,7 @@ export default function GitHubAnalysis() {
                 <div className="py-20 text-center flex flex-col items-center gap-4">
                   <BookOpen className="w-8 h-8 text-gray-600" />
                   <p className="text-gray-400 text-xs max-w-xs leading-relaxed">
-                    This project has not been analyzed by DevPortfolio AI yet. Click analyze below to trigger prompt generation.
+                    This project has not been analyzed by Devfolio AI yet. Click analyze below to trigger prompt generation.
                   </p>
                   <button
                     onClick={() => handleAnalyze(selectedRepo.id)}

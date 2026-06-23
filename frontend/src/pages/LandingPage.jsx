@@ -48,7 +48,7 @@ export default function LandingPage() {
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/6 text-orange-300 text-xs font-semibold mb-6 shadow-md"
         >
           <Sparkle className="w-3.5 h-3.5" />
-          <span>DevPortfolio AI v1.0 — Build Your Story in Minutes</span>
+          <span>Devfolio AI v1.0 — Build Your Story in Minutes</span>
         </motion.div>
 
         <motion.h1
@@ -168,9 +168,9 @@ export default function LandingPage() {
       <footer className="py-12 border-t border-white/5 text-center text-xs text-gray-500">
         <div className="flex items-center justify-center gap-2 mb-4">
           <Sparkle className="w-4 h-4 text-orange-400" />
-          <span className="font-bold text-white">DevPortfolio AI</span>
+          <span className="font-bold text-white">Devfolio AI</span>
         </div>
-        <p className="mb-3">© 2026 DevPortfolio AI. All rights reserved. Premium software for engineers.</p>
+        <p className="mb-3">© 2026 Devfolio AI. All rights reserved. Premium software for engineers.</p>
         <a
           href="https://github.com/tharunprinz"
           target="_blank"

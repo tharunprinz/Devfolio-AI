@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 
 export default function DashboardLayout() {
   const navigate = useNavigate();
-  const token = localStorage.getItem('devportfolio_token');
+  const token = localStorage.getItem('devfolio_token');
 
   useEffect(() => {
     if (!token) {

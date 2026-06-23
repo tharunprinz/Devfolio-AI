@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
     image: mongo:6.0
-    container_name: devportfolio-mongo
+    container_name: devfolio-mongo
     restart: always
     ports:
       - "27017:27017"

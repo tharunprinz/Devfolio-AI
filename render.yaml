@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: devportfolio-backend
+    name: devfolio-backend
     runtime: docker
     plan: free
     region: oregon

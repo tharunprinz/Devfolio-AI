@@ -12,7 +12,7 @@
     <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>devportfolio-backend</name>
-    <description>Backend API for DevPortfolio AI</description>
+    <description>Backend API for Devfolio AI</description>
     <properties>
         <java.version>17</java.version>
         <jwt.version>0.11.5</jwt.version>
