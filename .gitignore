@@ -1,0 +1,34 @@
+# IDE / System files
+.DS_Store
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment Secrets (DO NOT COMMIT!)
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+**/frontend/.env
+**/frontend/.env.local
+**/backend/.env
+
+# Java / Maven build outputs and tools
+**/target/
+.maven/
+*.tar.gz
+*.log
+
+# Frontend build outputs and dependencies
+**/node_modules/
+**/dist/
+**/dist-ssr/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
