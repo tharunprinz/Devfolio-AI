@@ -79,8 +79,8 @@ export default function PublicPortfolio() {
     <div className="min-h-screen bg-[#0A0A0A] relative text-left">
       
       {/* Background radial glares */}
-      <div className="glow-orb w-[500px] h-[500px] -top-40 -left-40 bg-purple-500/10" />
-      <div className="glow-orb w-[400px] h-[400px] bottom-10 right-10 bg-cyan-500/5" style={{ animationDelay: '-8s' }} />
+      <div className="glow-orb w-[500px] h-[500px] -top-40 -left-40 bg-orange-500/10" />
+      <div className="glow-orb w-[400px] h-[400px] bottom-10 right-10 bg-amber-500/5" style={{ animationDelay: '-8s' }} />
 
       {/* RENDER THEMES */}
       
@@ -95,13 +95,13 @@ export default function PublicPortfolio() {
 
           {/* About Panel */}
           <div className="glass-panel p-8 bg-white/5 border border-white/10 space-y-3">
-            <h2 className="font-bold text-xs text-purple-400 uppercase tracking-widest">About Me</h2>
+            <h2 className="font-bold text-xs text-amber-400 uppercase tracking-widest">About Me</h2>
             <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">{content.about?.bio}</p>
           </div>
 
           {/* Skills categories grid */}
           <div className="space-y-4">
-            <h2 className="font-bold text-xs text-purple-400 uppercase tracking-widest">Core Capabilities</h2>
+            <h2 className="font-bold text-xs text-amber-400 uppercase tracking-widest">Core Capabilities</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {Object.entries(content.skills || {}).map(([cat, list]) => (
                 <div key={cat} className="glass-panel p-4 bg-white/5 border border-white/5">
@@ -118,15 +118,15 @@ export default function PublicPortfolio() {
 
           {/* Projects */}
           <div className="space-y-4">
-            <h2 className="font-bold text-xs text-purple-400 uppercase tracking-widest font-sans">Projects Portfolio</h2>
+            <h2 className="font-bold text-xs text-amber-400 uppercase tracking-widest font-sans">Projects Portfolio</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {content.projects?.map((proj, idx) => (
-                <div key={idx} className="glass-panel p-6 bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all flex flex-col justify-between">
+                <div key={idx} className="glass-panel p-6 bg-white/5 border border-white/10 hover:border-orange-500/20 transition-all flex flex-col justify-between">
                   <div>
                     <div className="flex justify-between items-start gap-4">
                       <span className="font-bold text-white text-sm truncate tracking-tight">{proj.title}</span>
                       {proj.language && (
-                        <span className="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-purple-400 text-[9px] font-bold">{proj.language}</span>
+                        <span className="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20 text-amber-400 text-[9px] font-bold">{proj.language}</span>
                       )}
                     </div>
                     <p className="text-gray-400 text-xs mt-3 leading-relaxed">{proj.summary}</p>
@@ -138,7 +138,7 @@ export default function PublicPortfolio() {
 
           {/* Experiences */}
           <div className="space-y-4">
-            <h2 className="font-bold text-xs text-purple-400 uppercase tracking-widest">Experience</h2>
+            <h2 className="font-bold text-xs text-amber-400 uppercase tracking-widest">Experience</h2>
             <div className="space-y-4">
               {content.experiences?.map((exp, idx) => (
                 <div key={idx} className="glass-panel p-6 bg-white/5 border border-white/5">
@@ -214,15 +214,15 @@ export default function PublicPortfolio() {
 
       {/* 3. CYBERPUNK THEME */}
       {template === 'cyberpunk' && (
-        <div className="max-w-4xl mx-auto px-6 py-20 space-y-12 font-mono text-cyan-400">
-          <div className="border border-cyan-500/20 p-8 bg-cyan-950/5 relative overflow-hidden space-y-4">
-            <div className="absolute top-2 right-2 w-2.5 h-2.5 bg-cyan-500 animate-ping" />
+        <div className="max-w-4xl mx-auto px-6 py-20 space-y-12 font-mono text-amber-400">
+          <div className="border border-amber-500/20 p-8 bg-amber-950/5 relative overflow-hidden space-y-4">
+            <div className="absolute top-2 right-2 w-2.5 h-2.5 bg-amber-500 animate-ping" />
             <span className="text-[10px] text-gray-500 font-bold tracking-wider">// INITIALIZING PORTFOLIO SESSION</span>
             <h1 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">{content.hero?.title}</h1>
-            <p className="text-cyan-300 text-xs sm:text-sm leading-relaxed">{content.hero?.subtitle}</p>
+            <p className="text-amber-300 text-xs sm:text-sm leading-relaxed">{content.hero?.subtitle}</p>
           </div>
 
-          <div className="border border-cyan-500/20 p-8 space-y-4 bg-cyan-950/5">
+          <div className="border border-amber-500/20 p-8 space-y-4 bg-amber-950/5">
             <span className="text-[10px] text-gray-500 font-bold tracking-wider">// DEVELOPER CORE NARRATIVE</span>
             <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">{content.about?.bio}</p>
           </div>
@@ -231,9 +231,9 @@ export default function PublicPortfolio() {
             <span className="text-[10px] text-gray-500 font-bold tracking-wider">// FEATURED REPOS MODULE</span>
             <div className="grid md:grid-cols-2 gap-6">
               {content.projects?.map((p, idx) => (
-                <div key={idx} className="border border-cyan-500/20 p-6 hover:border-cyan-400 transition-colors bg-black/40">
+                <div key={idx} className="border border-amber-500/20 p-6 hover:border-amber-400 transition-colors bg-black/40">
                   <span className="block font-bold text-white text-xs uppercase">{p.title}</span>
-                  <span className="block text-[10px] text-purple-400 mt-1">&gt; Language: {p.language}</span>
+                  <span className="block text-[10px] text-amber-400 mt-1">&gt; Language: {p.language}</span>
                   <p className="text-gray-400 text-[11px] leading-relaxed mt-3">{p.summary}</p>
                 </div>
               ))}
@@ -272,14 +272,14 @@ export default function PublicPortfolio() {
       {template === 'startup' && (
         <div className="max-w-4xl mx-auto px-6 py-20 space-y-16">
           <div className="space-y-6">
-            <div className="inline-flex px-3 py-1 bg-purple-600/10 border border-purple-500/20 text-purple-400 font-semibold text-[10px] uppercase rounded-full tracking-wider">
+            <div className="inline-flex px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-amber-400 font-semibold text-[10px] uppercase rounded-full tracking-wider">
               Ready to ship
             </div>
             <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight">{content.hero?.title}</h1>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-xl">{content.hero?.subtitle}</p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-purple-950/10 border border-purple-500/10 text-xs sm:text-sm text-purple-200 leading-relaxed text-justify">
+          <div className="p-6 rounded-2xl bg-orange-950/10 border border-orange-500/10 text-xs sm:text-sm text-amber-200 leading-relaxed text-justify">
             {content.about?.bio}
           </div>
 
@@ -292,7 +292,7 @@ export default function PublicPortfolio() {
                     <span className="font-bold text-white text-xs">{p.title}</span>
                     <p className="text-gray-400 text-[11px] leading-relaxed mt-2">{p.summary}</p>
                   </div>
-                  <span className="block text-[10px] text-purple-400 font-bold uppercase mt-4">{p.language}</span>
+                  <span className="block text-[10px] text-amber-400 font-bold uppercase mt-4">{p.language}</span>
                 </div>
               ))}
             </div>

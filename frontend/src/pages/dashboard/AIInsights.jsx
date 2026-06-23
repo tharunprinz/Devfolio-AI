@@ -11,6 +11,7 @@ import {
   BookOpen,
   Send,
   Copy,
+  FileDown,
   Terminal,
   Loader2
 } from 'lucide-react';
@@ -112,6 +113,24 @@ export default function AIInsights() {
     alert('Copied to clipboard!');
   };
 
+  const downloadCoverLetterPdf = () => {
+    if (!coverLetter) return;
+    const printWindow = window.open('', '_blank');
+    const safeLetter = coverLetter.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const htmlContent = `<!DOCTYPE html><html><head><title>Cover Letter</title>
+      <style>
+        body{font-family:'Georgia',serif;max-width:700px;margin:60px auto;color:#111;font-size:14px;line-height:1.9;}
+        h1{font-size:18px;font-family:sans-serif;font-weight:bold;margin-bottom:28px;color:#333;border-bottom:2px solid #f97316;padding-bottom:10px;}
+        p{white-space:pre-wrap;margin:0;}
+        @media print{body{margin:40px;}}
+      </style></head>
+      <body><h1>Cover Letter</h1><p>${safeLetter}</p>
+      <script>window.onload=function(){window.print();window.close();};</script>
+      </body></html>`;
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+  };
+
   // Helper parsers
   const parseJsonList = (str) => {
     if (!str) return [];
@@ -173,7 +192,7 @@ export default function AIInsights() {
       <div className="grid md:grid-cols-2 gap-8 select-none">
         <div className="glass-panel p-6 bg-white/5 border border-white/10 space-y-4">
           <h2 className="font-bold text-sm text-white flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-teal-400" />
+            <TrendingUp className="w-4 h-4 text-amber-400" />
             <span>Developer Strengths</span>
           </h2>
           <ul className="space-y-3">
@@ -216,7 +235,7 @@ export default function AIInsights() {
                 
                 {/* Progress bar */}
                 <div className="w-full h-1.5 rounded-full bg-white/5 overflow-hidden mb-4">
-                  <div className="h-full rounded-full bg-gradient-to-r from-orange-500 to-teal-500" style={{ width: `${data.matchPercentage}%` }} />
+                  <div className="h-full rounded-full bg-gradient-to-r from-orange-500 to-amber-400" style={{ width: `${data.matchPercentage}%` }} />
                 </div>
               </div>
 
@@ -280,14 +299,24 @@ export default function AIInsights() {
             </button>
 
             {coverLetter && (
-              <div className="p-4 rounded-xl border border-white/5 bg-black/60 relative">
-                <button 
-                  onClick={() => copyToClipboard(coverLetter)}
-                  className="absolute top-2 right-2 p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white"
-                >
-                  <Copy className="w-3.5 h-3.5" />
-                </button>
-                <div className="text-[10px] font-mono text-gray-300 whitespace-pre-wrap max-h-56 overflow-y-auto leading-relaxed text-left pr-4">
+              <div className="p-4 rounded-xl border border-orange-500/10 bg-black/60 relative">
+                <div className="absolute top-2 right-2 flex gap-1">
+                  <button 
+                    onClick={() => copyToClipboard(coverLetter)}
+                    title="Copy to clipboard"
+                    className="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-amber-400 transition-colors"
+                  >
+                    <Copy className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={downloadCoverLetterPdf}
+                    title="Save as PDF"
+                    className="p-1.5 rounded-lg bg-orange-500/10 text-orange-400 hover:text-orange-300 hover:bg-orange-500/20 transition-colors"
+                  >
+                    <FileDown className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+                <div className="text-[10px] font-mono text-gray-300 whitespace-pre-wrap max-h-56 overflow-y-auto leading-relaxed text-left pr-12">
                   {coverLetter}
                 </div>
               </div>
@@ -299,7 +328,7 @@ export default function AIInsights() {
         <div className="glass-panel p-6 bg-white/5 border border-white/10 space-y-4 flex flex-col justify-between">
           <div className="space-y-4">
             <h2 className="font-bold text-sm text-white flex items-center gap-2 select-none">
-              <Award className="w-4 h-4 text-teal-400" />
+              <Award className="w-4 h-4 text-amber-400" />
               <span>LinkedIn Bio Generator</span>
             </h2>
 
@@ -322,7 +351,7 @@ export default function AIInsights() {
             <button
               onClick={handleGenerateLinkedIn}
               disabled={generatingLinkedin}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-600 to-teal-500 text-white text-xs font-semibold hover:from-teal-500 hover:to-teal-400 disabled:opacity-50 transition-all cursor-pointer select-none"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 text-white text-xs font-semibold hover:from-orange-400 hover:to-amber-300 disabled:opacity-50 transition-all cursor-pointer select-none btn-glow"
             >
               {generatingLinkedin ? 'Writing summary...' : 'Generate LinkedIn Summary'}
             </button>

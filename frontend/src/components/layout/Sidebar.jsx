@@ -36,12 +36,12 @@ export default function Sidebar() {
     <aside className="w-68 h-[calc(100vh-2rem)] sticky top-4 left-4 flex flex-col glass-panel p-6 m-4 select-none">
       {/* Brand logo */}
       <div className="flex items-center gap-3 px-2 mb-8">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-purple-500/20">
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-500 to-amber-400 flex items-center justify-center shadow-lg shadow-orange-500/20">
           <Sparkle className="w-5 h-5 text-white" />
         </div>
         <div>
           <span className="font-bold text-lg text-white leading-tight block">DevPortfolio</span>
-          <span className="text-[10px] text-purple-400 font-semibold tracking-wider uppercase">AI Platform</span>
+          <span className="text-[10px] text-amber-400 font-semibold tracking-wider uppercase">AI Platform</span>
         </div>
       </div>
 
@@ -62,13 +62,13 @@ export default function Sidebar() {
               {isActive && (
                 <motion.div
                   layoutId="active-indicator"
-                  className="absolute inset-0 bg-purple-500/10 border border-purple-500/20 rounded-xl"
+                  className="absolute inset-0 bg-orange-500/10 border border-orange-500/20 rounded-xl"
                   initial={false}
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
               <Icon className={`w-4 h-4 z-10 transition-transform group-hover:scale-110 ${
-                isActive ? 'text-purple-400' : 'text-gray-400 group-hover:text-white'
+                isActive ? 'text-amber-400' : 'text-gray-400 group-hover:text-white'
               }`} />
               <span className="z-10">{item.label}</span>
             </Link>

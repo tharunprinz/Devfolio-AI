@@ -232,7 +232,7 @@ export default function ResumeBuilder() {
         <div className="flex gap-3">
           <button
             onClick={handleExportPdf}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 text-gray-300 font-semibold text-xs hover:bg-white/10 transition-colors cursor-pointer border border-white/5"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 text-white font-semibold text-xs hover:from-orange-400 hover:to-amber-300 transition-all cursor-pointer border border-orange-500/20 shadow-lg shadow-orange-500/20 btn-glow"
           >
             <Printer className="w-3.5 h-3.5" />
             <span>Export PDF</span>
@@ -241,7 +241,7 @@ export default function ResumeBuilder() {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 text-white font-semibold text-xs hover:bg-purple-500 disabled:opacity-50 transition-colors shadow-lg shadow-purple-600/10 cursor-pointer border border-purple-500/20"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/8 text-white font-semibold text-xs hover:bg-white/15 disabled:opacity-50 transition-colors cursor-pointer border border-white/10"
           >
             <Save className="w-3.5 h-3.5" />
             <span>{saving ? 'Saving...' : 'Save CV'}</span>
@@ -256,9 +256,9 @@ export default function ResumeBuilder() {
         <div className="lg:col-span-2 space-y-6 max-h-[calc(100vh-12rem)] overflow-y-auto pr-2">
           
           {/* AI Polisher Controls */}
-          <div className="glass-panel p-6 bg-purple-600/5 border border-purple-500/20 space-y-4">
-            <h2 className="font-bold text-sm text-purple-300 flex items-center gap-2 select-none">
-              <Wand2 className="w-4 h-4 text-purple-400" />
+          <div className="glass-panel p-6 bg-orange-500/5 border border-orange-500/15 space-y-4">
+            <h2 className="font-bold text-sm text-orange-300 flex items-center gap-2 select-none">
+              <Wand2 className="w-4 h-4 text-orange-400" />
               <span>AI ATS Enhancer</span>
             </h2>
             <p className="text-gray-400 text-xs select-none">Enter formatting targets (e.g. "make bullets sound more impact-driven" or "highlight React/Spring Boot keywords").</p>
@@ -268,12 +268,12 @@ export default function ResumeBuilder() {
                 value={polishInstructions}
                 onChange={(e) => setPolishInstructions(e.target.value)}
                 placeholder="Custom refinement instructions..."
-                className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-purple-500/50"
+                className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none"
               />
               <button
                 onClick={handleAiPolish}
                 disabled={polishing}
-                className="w-full py-2 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer select-none"
+                className="w-full py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 hover:from-orange-400 hover:to-amber-300 disabled:opacity-50 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer select-none btn-glow"
               >
                 {polishing ? 'Improving wording...' : 'Polish Complete Resume'}
               </button>
@@ -355,7 +355,7 @@ export default function ResumeBuilder() {
               <h2 className="font-bold text-sm text-white">Work Experience</h2>
               <button 
                 onClick={() => handleAddField('experience', { role: 'Engineer', company: 'New Company', dates: '2024 - Present', bullets: ['Built things.'] })}
-                className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-purple-400 hover:text-purple-300 transition-colors"
+                className="p-1.5 rounded-lg bg-white/5 hover:bg-orange-500/10 text-amber-400 hover:text-amber-300 transition-colors"
               >
                 <Plus className="w-4 h-4" />
               </button>
@@ -417,7 +417,7 @@ export default function ResumeBuilder() {
         <div className="lg:col-span-3 space-y-4">
           <div className="flex items-center justify-between px-2 select-none">
             <span className="text-xs font-semibold text-gray-400 flex items-center gap-2">
-              <FileCheck className="w-4 h-4 text-blue-400" />
+              <FileCheck className="w-4 h-4 text-amber-400" />
               <span>ATS Resume Layout Preview</span>
             </span>
           </div>

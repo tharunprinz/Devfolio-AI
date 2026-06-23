@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-
 @theme {
-  /* ── Core brand colours ── */
+  /* ── Core ── */
   --color-bg-dark: #0A0A0A;
 
-  /* Sunset Orange — replaces purple */
+  /* ── Sunset Orange — primary brand ── */
   --color-orange-50:  #fff7ed;
   --color-orange-100: #ffedd5;
   --color-orange-200: #fed7aa;
@@ -19,22 +18,23 @@
   --color-orange-900: #7c310c;
   --color-orange-950: #431707;
 
-  /* Amber accent — warm mid-tone for CTAs */
+  /* ── Warm Amber / Light Yellow — secondary accent ── */
+  --color-amber-50:  #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
   --color-amber-400: #fbbf24;
   --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
+  --color-amber-950: #451a03;
 
-  /* Neon Teal — replaces blue */
-  --color-teal-50:  #f0fdfa;
-  --color-teal-100: #ccfbf1;
-  --color-teal-200: #99f6e4;
-  --color-teal-300: #5eead4;
-  --color-teal-400: #2dd4bf;
-  --color-teal-500: #14b8a6;
-  --color-teal-600: #0d9488;
-  --color-teal-700: #0f766e;
-  --color-teal-800: #115e59;
-  --color-teal-900: #134e4a;
-  --color-teal-950: #042f2e;
+  /* ── Yellow — highlight / glow ── */
+  --color-yellow-300: #fde047;
+  --color-yellow-400: #facc15;
+  --color-yellow-500: #eab308;
 
   /* Card system */
   --color-card-bg:     rgba(255, 255, 255, 0.04);
@@ -52,14 +52,13 @@
     min-height: 100vh;
   }
 
-  /* Custom Scrollbar */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
   ::-webkit-scrollbar-thumb {
-    background: rgba(249, 115, 22, 0.25);
+    background: rgba(249, 115, 22, 0.3);
     border-radius: 9999px;
   }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(249, 115, 22, 0.45); }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(249, 115, 22, 0.5); }
 }
 
 /* ── Glass panels ── */
@@ -76,39 +75,32 @@
 }
 .glass-panel-hover:hover {
   background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(249, 115, 22, 0.35);
-  box-shadow: 0 10px 30px -10px rgba(249, 115, 22, 0.18);
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 10px 40px -10px rgba(249, 115, 22, 0.2);
   transform: translateY(-2px);
 }
 
 /* ── Text gradients ── */
+/* White → warm orange — default hero gradient */
 .text-gradient {
-  background: linear-gradient(135deg, #FFF 30%, #fdba74 100%);
+  background: linear-gradient(135deg, #FFF 30%, #fbbf24 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Orange → Teal — the primary brand gradient */
-.text-gradient-orange-teal {
-  background: linear-gradient(135deg, #f97316 0%, #14b8a6 100%);
+/* Orange → Yellow — primary CTA gradient */
+.text-gradient-orange-yellow {
+  background: linear-gradient(135deg, #f97316 0%, #fbbf24 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Keep legacy class name so existing JSX doesn't break */
-.text-gradient-purple-blue {
-  background: linear-gradient(135deg, #f97316 0%, #14b8a6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* Aliases so existing JSX doesn't break */
+.text-gradient-orange-teal    { background: linear-gradient(135deg, #f97316 0%, #fbbf24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.text-gradient-purple-blue    { background: linear-gradient(135deg, #f97316 0%, #fbbf24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.text-gradient-cyan-blue      { background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-.text-gradient-cyan-blue {
-  background: linear-gradient(135deg, #14b8a6 0%, #f97316 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ── Background ── */
+/* ── Mesh background ── */
 .bg-grid-pattern {
   background-size: 40px 40px;
   background-image:
@@ -116,28 +108,41 @@
     linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
 }
 
-/* ── Animated glow orbs ── */
+/* ── Glow orbs ── */
 .glow-orb {
   position: absolute;
   border-radius: 9999px;
   filter: blur(100px);
-  opacity: 0.25;
+  opacity: 0.22;
   mix-blend-mode: screen;
   pointer-events: none;
-  animation: float-slow 20s infinite alternate ease-in-out;
+  animation: float-slow 22s infinite alternate ease-in-out;
 }
 
 @keyframes float-slow {
-  0%   { transform: translate(0px,  0px)   scale(1);   }
-  50%  { transform: translate(40px, -60px) scale(1.2); }
-  100% { transform: translate(-30px, 30px) scale(0.9); }
+  0%   { transform: translate(0px,   0px)   scale(1);   }
+  50%  { transform: translate(40px, -60px)  scale(1.2); }
+  100% { transform: translate(-30px,  30px) scale(0.9); }
 }
 
-/* ── Focus ring override ── */
+/* ── Glassy orange input focus ── */
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: rgba(249, 115, 22, 0.5) !important;
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+  border-color: rgba(249, 115, 22, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
 }
+
+/* ── Glassy orange card accent ── */
+.card-orange {
+  background: rgba(249, 115, 22, 0.06);
+  border-color: rgba(249, 115, 22, 0.2);
+}
+
+/* ── Amber glow button ── */
+.btn-glow {
+  box-shadow: 0 4px 24px -4px rgba(249, 115, 22, 0.35);
+  transition: box-shadow 0.2s ease, opacity 0.2s ease;
+}
+.btn-glow:hover { box-shadow: 0 6px 32px -4px rgba(249, 115, 22, 0.55); }

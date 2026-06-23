@@ -81,7 +81,7 @@ export default function Login() {
         {/* Glow accent */}
         <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-20 bg-orange-500/20 blur-2xl" />
 
-        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-orange-500 to-teal-400 flex items-center justify-center mx-auto mb-6">
+        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-orange-500 to-amber-400 flex items-center justify-center mx-auto mb-6">
           <Sparkles className="w-6 h-6 text-white" />
         </div>
 

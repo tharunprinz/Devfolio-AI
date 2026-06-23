@@ -150,7 +150,7 @@ export default function PortfolioBuilder() {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 text-white font-semibold text-xs hover:bg-purple-500 disabled:opacity-50 transition-colors shadow-lg shadow-purple-600/10 cursor-pointer border border-purple-500/20"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 text-white font-semibold text-xs hover:bg-orange-500 disabled:opacity-50 transition-colors shadow-lg shadow-orange-500/15 cursor-pointer border border-orange-500/20"
           >
             <Save className="w-3.5 h-3.5" />
             <span>{saving ? 'Saving...' : 'Save Portfolio'}</span>
@@ -167,7 +167,7 @@ export default function PortfolioBuilder() {
           {/* Template Selectors */}
           <div className="glass-panel p-6 bg-white/5 border border-white/10 space-y-4">
             <h2 className="font-bold text-sm text-white flex items-center gap-2 select-none">
-              <Layers className="w-4 h-4 text-purple-400" />
+              <Layers className="w-4 h-4 text-amber-400" />
               <span>Select UI Preset</span>
             </h2>
 
@@ -178,7 +178,7 @@ export default function PortfolioBuilder() {
                   onClick={() => handleTemplateChange(temp)}
                   className={`p-3 rounded-xl border text-[11px] font-semibold text-center transition-all cursor-pointer capitalize ${
                     selectedTemplate === temp
-                      ? 'bg-purple-600/10 border-purple-500 text-white shadow-lg'
+                      ? 'bg-orange-500/10 border-orange-500 text-white shadow-lg'
                       : 'bg-white/5 border-white/5 text-gray-400 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -202,7 +202,7 @@ export default function PortfolioBuilder() {
                     ...prev,
                     hero: { ...prev.hero, title: e.target.value }
                   }))}
-                  className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-purple-500/50"
+                  className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-orange-500/40"
                 />
               </div>
 
@@ -215,7 +215,7 @@ export default function PortfolioBuilder() {
                     hero: { ...prev.hero, subtitle: e.target.value }
                   }))}
                   rows={2}
-                  className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-purple-500/50 resize-none"
+                  className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-orange-500/40 resize-none"
                 />
               </div>
 
@@ -228,7 +228,7 @@ export default function PortfolioBuilder() {
                     about: { ...prev.about, bio: e.target.value }
                   }))}
                   rows={4}
-                  className="w-full p-4 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-purple-500/50 leading-relaxed resize-none"
+                  className="w-full p-4 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-orange-500/40 leading-relaxed resize-none"
                 />
               </div>
             </div>
@@ -250,7 +250,7 @@ export default function PortfolioBuilder() {
                       onClick={() => handleProjectToggle(repo.id, repo.repoName, repo.description, repo.language)}
                       className={`flex justify-between items-center p-3 rounded-xl border transition-all cursor-pointer ${
                         isChecked 
-                          ? 'border-purple-500 bg-purple-500/5' 
+                          ? 'border-orange-500 bg-orange-500/5' 
                           : 'border-white/5 bg-white/5 hover:bg-white/10'
                       }`}
                     >
@@ -259,7 +259,7 @@ export default function PortfolioBuilder() {
                         <span className="block text-[9px] text-gray-500 truncate">{repo.language || 'Unknown language'}</span>
                       </div>
                       <div className={`w-4 h-4 rounded-full flex items-center justify-center border shrink-0 ${
-                        isChecked ? 'bg-purple-600 border-purple-500 text-white' : 'border-gray-600'
+                        isChecked ? 'bg-gradient-to-r from-orange-500 to-amber-400 border-orange-500 text-white' : 'border-gray-600'
                       }`}>
                         {isChecked && <Check className="w-2.5 h-2.5" />}
                       </div>
@@ -277,7 +277,7 @@ export default function PortfolioBuilder() {
             <div className="space-y-4">
               <div className="space-y-1">
                 <label className="text-[10px] text-gray-500 font-bold uppercase select-none flex items-center gap-1">
-                  <Globe className="w-3 h-3 text-cyan-400" />
+                  <Globe className="w-3 h-3 text-amber-400" />
                   <span>Public URL path</span>
                 </label>
                 <input 
@@ -285,20 +285,20 @@ export default function PortfolioBuilder() {
                   value={publishedUrl}
                   onChange={(e) => setPublishedUrl(e.target.value)}
                   placeholder="e.g. janesmith"
-                  className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-purple-500/50"
+                  className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-orange-500/40"
                 />
               </div>
 
               <div className="space-y-1">
                 <label className="text-[10px] text-gray-500 font-bold uppercase select-none flex items-center gap-1">
-                  <MessageSquare className="w-3 h-3 text-purple-400" />
+                  <MessageSquare className="w-3 h-3 text-amber-400" />
                   <span>Recruiter Chatbot greeting</span>
                 </label>
                 <input 
                   type="text" 
                   value={chatbot?.welcomeMessage || ''}
                   onChange={(e) => setChatbot(prev => ({ ...prev, welcomeMessage: e.target.value }))}
-                  className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-purple-500/50"
+                  className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-orange-500/40"
                 />
               </div>
             </div>
@@ -310,7 +310,7 @@ export default function PortfolioBuilder() {
         <div className="lg:col-span-3 space-y-4">
           <div className="flex items-center justify-between px-2 select-none">
             <span className="text-xs font-semibold text-gray-400 flex items-center gap-2">
-              <Eye className="w-4 h-4 text-purple-400" />
+              <Eye className="w-4 h-4 text-amber-400" />
               <span>Canvas Visual Editor Preview</span>
             </span>
           </div>
@@ -336,28 +336,28 @@ export default function PortfolioBuilder() {
               {selectedTemplate === 'glassmorphism' && (
                 <div className="space-y-8">
                   {/* Subtle orb background in preview container */}
-                  <div className="absolute top-10 right-10 w-44 h-44 rounded-full bg-purple-600/10 blur-xl pointer-events-none" />
+                  <div className="absolute top-10 right-10 w-44 h-44 rounded-full bg-orange-500/10 blur-xl pointer-events-none" />
                   
                   <div className="space-y-3">
                     <h1 className="text-2xl font-bold text-white tracking-tight">{content?.hero?.title}</h1>
                     <p className="text-gray-400 text-xs leading-relaxed max-w-md">{content?.hero?.subtitle}</p>
-                    <button className="px-4 py-2 rounded-xl bg-purple-600 text-white text-[10px] font-bold mt-2 shadow-md">
+                    <button className="px-4 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 text-white text-[10px] font-bold mt-2 shadow-md">
                       {content?.hero?.ctaText || 'View Projects'}
                     </button>
                   </div>
 
                   <div className="p-5 rounded-2xl border border-white/5 bg-white/5 space-y-2">
-                    <span className="text-[10px] text-purple-400 font-bold uppercase">About Me</span>
+                    <span className="text-[10px] text-amber-400 font-bold uppercase">About Me</span>
                     <p className="text-gray-300 text-[11px] leading-relaxed">{content?.about?.bio}</p>
                   </div>
 
                   <div className="space-y-3">
-                    <span className="text-[10px] text-purple-400 font-bold uppercase">Featured Projects</span>
+                    <span className="text-[10px] text-amber-400 font-bold uppercase">Featured Projects</span>
                     <div className="grid grid-cols-2 gap-4">
                       {content.projects?.map((p, idx) => (
                         <div key={idx} className="p-4 rounded-xl border border-white/5 bg-white/5">
                           <span className="block font-bold text-xs text-white truncate">{p.title}</span>
-                          <span className="block text-[9px] text-purple-400 mt-1">{p.language}</span>
+                          <span className="block text-[9px] text-amber-400 mt-1">{p.language}</span>
                           <p className="text-gray-400 text-[10px] line-clamp-2 mt-2 leading-relaxed">{p.summary}</p>
                         </div>
                       ))}
@@ -382,14 +382,14 @@ export default function PortfolioBuilder() {
 
               {/* Cyberpunk Theme preview */}
               {selectedTemplate === 'cyberpunk' && (
-                <div className="space-y-6 font-mono border border-cyan-500/20 p-6 bg-cyan-950/5 relative">
-                  <div className="absolute top-2 right-2 w-2 h-2 bg-cyan-500 animate-pulse" />
+                <div className="space-y-6 font-mono border border-amber-500/20 p-6 bg-amber-950/5 relative">
+                  <div className="absolute top-2 right-2 w-2 h-2 bg-amber-500 animate-pulse" />
                   <div className="space-y-2">
-                    <span className="text-[9px] text-cyan-400 font-bold">[ SYSTEM_ACTIVE ]</span>
+                    <span className="text-[9px] text-amber-400 font-bold">[ SYSTEM_ACTIVE ]</span>
                     <h1 className="text-2xl font-bold text-white uppercase tracking-tight">{content?.hero?.title}</h1>
-                    <p className="text-cyan-300 text-[11px] font-semibold leading-relaxed">{content?.hero?.subtitle}</p>
+                    <p className="text-amber-300 text-[11px] font-semibold leading-relaxed">{content?.hero?.subtitle}</p>
                   </div>
-                  <div className="border-t border-cyan-500/10 pt-4 text-xs text-gray-400">
+                  <div className="border-t border-amber-500/10 pt-4 text-xs text-gray-400">
                     <p className="leading-relaxed">&gt; {content?.about?.bio}</p>
                   </div>
                 </div>
@@ -416,11 +416,11 @@ export default function PortfolioBuilder() {
               {selectedTemplate === 'startup' && (
                 <div className="space-y-6">
                   <div className="space-y-2">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center font-bold text-white text-xs">SF</div>
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-orange-500 to-amber-400 flex items-center justify-center font-bold text-white text-xs">SF</div>
                     <h1 className="text-2xl font-bold text-white tracking-tight">{content?.hero?.title}</h1>
                     <p className="text-gray-400 text-xs">{content?.hero?.subtitle}</p>
                   </div>
-                  <div className="p-4 rounded-xl bg-purple-950/10 border border-purple-500/10 text-xs text-purple-300 leading-relaxed">
+                  <div className="p-4 rounded-xl bg-orange-950/10 border border-orange-500/10 text-xs text-amber-300 leading-relaxed">
                     {content?.about?.bio}
                   </div>
                 </div>

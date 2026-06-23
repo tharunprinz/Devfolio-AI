@@ -49,7 +49,7 @@ export default function ChatbotWidget({ publishedUrl, chatbotSettings, developer
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="w-14 h-14 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-500 hover:scale-105 transition-transform flex items-center justify-center text-white shadow-xl shadow-purple-600/20 cursor-pointer"
+          className="w-14 h-14 rounded-full bg-gradient-to-tr from-orange-500 to-amber-400 hover:scale-105 transition-transform flex items-center justify-center text-white shadow-xl shadow-orange-500/20 cursor-pointer"
         >
           <MessageSquare className="w-6 h-6" />
         </button>
@@ -57,12 +57,12 @@ export default function ChatbotWidget({ publishedUrl, chatbotSettings, developer
 
       {/* Chat Box card */}
       {isOpen && (
-        <div className="w-80 sm:w-96 h-[450px] glass-panel bg-black/90 border border-purple-500/20 shadow-2xl flex flex-col justify-between overflow-hidden">
+        <div className="w-80 sm:w-96 h-[450px] glass-panel bg-black/90 border border-orange-500/20 shadow-2xl flex flex-col justify-between overflow-hidden">
           
           {/* Header */}
           <div className="p-4 bg-white/5 border-b border-white/5 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">
+              <div className="w-7 h-7 rounded-lg bg-orange-500/10 flex items-center justify-center text-amber-400">
                 <Sparkle className="w-4 h-4 animate-pulse" />
               </div>
               <span className="font-bold text-xs text-white">AI Recruiting Bot</span>
@@ -85,7 +85,7 @@ export default function ChatbotWidget({ publishedUrl, chatbotSettings, developer
                 <div 
                   className={`p-3 rounded-2xl max-w-[80%] leading-relaxed text-left ${
                     m.sender === 'user' 
-                      ? 'bg-purple-600 text-white rounded-tr-none' 
+                      ? 'bg-gradient-to-r from-orange-500 to-amber-400 text-white rounded-tr-none' 
                       : 'bg-white/5 border border-white/5 text-gray-300 rounded-tl-none'
                   }`}
                 >
@@ -114,12 +114,12 @@ export default function ChatbotWidget({ publishedUrl, chatbotSettings, developer
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask me a question about their stack..."
-              className="flex-1 p-2.5 rounded-xl bg-black/40 border border-white/5 text-white text-xs outline-none focus:border-purple-500/50"
+              className="flex-1 p-2.5 rounded-xl bg-black/40 border border-white/5 text-white text-xs outline-none focus:border-orange-500/40"
             />
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="p-2.5 rounded-xl bg-purple-600 text-white hover:bg-purple-500 disabled:opacity-50 transition-colors cursor-pointer"
+              className="p-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 text-white hover:from-orange-400 hover:to-amber-300 disabled:opacity-50 transition-colors cursor-pointer"
             >
               <Send className="w-4 h-4" />
             </button>

@@ -35,7 +35,7 @@ export default function Settings() {
         {/* API Credentials */}
         <div className="glass-panel p-6 bg-white/5 border border-white/10 space-y-4">
           <h2 className="font-bold text-sm text-white flex items-center gap-2">
-            <Key className="w-4 h-4 text-purple-400" />
+            <Key className="w-4 h-4 text-amber-400" />
             <span>Developer Keys (Overrides)</span>
           </h2>
           <p className="text-gray-400 text-xs">If you prefer running API requests directly with your own Google Gemini Key, save it below. Otherwise, we default to the backend service mock engine.</p>
@@ -47,7 +47,7 @@ export default function Settings() {
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="AIzaSy..."
-              className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-purple-500/50"
+              className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-orange-500/40"
             />
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function Settings() {
         {/* Custom Domain routing */}
         <div className="glass-panel p-6 bg-white/5 border border-white/10 space-y-4">
           <h2 className="font-bold text-sm text-white flex items-center gap-2">
-            <Globe className="w-4 h-4 text-cyan-400" />
+            <Globe className="w-4 h-4 text-amber-400" />
             <span>Domain Redirection Routing</span>
           </h2>
           <div className="space-y-2">
@@ -65,7 +65,7 @@ export default function Settings() {
               value={customDomain}
               onChange={(e) => setCustomDomain(e.target.value)}
               placeholder="e.g. www.janesmith.com"
-              className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-purple-500/50"
+              className="w-full p-3 rounded-xl border border-white/10 bg-white/5 text-white text-xs outline-none focus:border-orange-500/40"
             />
           </div>
         </div>
@@ -89,7 +89,7 @@ export default function Settings() {
         <div className="pt-4">
           <button
             onClick={handleSaveSettings}
-            className="px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold transition-colors cursor-pointer"
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 hover:bg-orange-500 text-white text-xs font-semibold transition-colors cursor-pointer"
           >
             Save Configuration Settings
           </button>
