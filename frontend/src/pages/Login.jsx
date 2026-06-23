@@ -52,8 +52,8 @@ export default function Login() {
   };
 
   const triggerGitHubLogin = () => {
-    // Use registered callback URL — no explicit redirect_uri to avoid mismatch
-    const oauthUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=user,repo`;
+    // redirect_uri MUST match in both authorization AND token exchange steps
+    const oauthUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=user,repo`;
     window.location.href = oauthUrl;
   };
 
