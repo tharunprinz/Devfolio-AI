@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Sparkles, Loader2, Key } from 'lucide-react';
@@ -11,6 +11,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const exchangedRef = useRef(false); // Guard: only exchange code once
 
   // Mapped to GitHub client configurations
   const GITHUB_CLIENT_ID = import.meta.env.VITE_GITHUB_CLIENT_ID || 'placeholder-client';
@@ -18,7 +19,8 @@ export default function Login() {
 
   useEffect(() => {
     const code = searchParams.get('code');
-    if (code) {
+    if (code && !exchangedRef.current) {
+      exchangedRef.current = true; // Mark as consumed immediately
       handleOAuthCallback(code);
     }
   }, [searchParams]);
@@ -26,6 +28,9 @@ export default function Login() {
   const handleOAuthCallback = async (code) => {
     setLoading(true);
     setError(null);
+    // Clear any stale tokens before the fresh OAuth exchange
+    localStorage.removeItem('devportfolio_token');
+    localStorage.removeItem('devportfolio_user');
     try {
       const response = await authApi.loginWithGitHub(code, REDIRECT_URI);
       const { token, username, name, avatarUrl } = response.data;
