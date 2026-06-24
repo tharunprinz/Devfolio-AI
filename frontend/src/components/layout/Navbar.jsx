@@ -38,7 +38,7 @@ export default function Navbar() {
             title="tharunprinz on GitHub"
           >
             <GithubIcon className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">tharunprinz</span>
+            <span className="hidden sm:inline">Tharun R</span>
           </a>
 
           {user ? (
