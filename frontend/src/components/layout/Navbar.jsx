@@ -35,10 +35,10 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-orange-500/8 border border-white/10 hover:border-orange-500/20 transition-all duration-200"
-            title="tharunprinz on GitHub"
+            title="Tharun R"
           >
             <GithubIcon className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Tharun R</span>
+            <span className="hidden sm:inline">tharunprinz</span>
           </a>
 
           {user ? (
